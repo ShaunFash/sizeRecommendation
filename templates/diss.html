@@ -1,0 +1,182 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+<html>
+<head>
+<title> Prediction of Clothes Size for Online Shopping </title>
+<style>
+body {background-color: powderblue;}
+h1   {color: blue;}
+p    {color: red;}
+mark {
+    color:#cc5500;
+    background: none;
+}
+</style>
+</head>
+
+<h1>Prediction of Clothes Size for Online Shopping </h1>
+
+<body>
+
+<form method="POST" action="{{ url_for('predict')}}">
+  <label for="weight">Weight(lbs):</label><br>
+  <input type="number" id="weight" name="weight"><br>
+  <label for="height">Height(cm):</label><br>
+  <input type="number" id="height" name="height" value= {{cv}}><br>
+  <label for="age">Age:</label><br>
+  <input type="number" id="age" name="age"><br>
+  <label for="bustsize">Bust Size:</label><br>
+  <input list="bustsize" name="bustsize"><br>
+  <datalist id="bustsize">
+    <option value="28aa">
+    <option value="28a">
+    <option value="28b">
+    <option value="28c">
+    <option value="28d">
+    <option value="28dd">
+    <option value="28e">
+    <option value="28f">
+    <option value="28g">
+    <option value="28h">
+    <option value="30aa">
+	<option value="30a">
+    <option value="30b">
+    <option value="30c">
+	<option value="30d">
+    <option value="30dd">
+    <option value="30e">
+    <option value="30f">
+	<option value="30g">
+    <option value="30h">
+	<option value="30i">
+    <option value="32aa">
+	<option value="32a">
+    <option value="32b">
+    <option value="32c">
+	<option value="32d">
+    <option value="32dd">
+	<option value="32e">
+    <option value="32f">
+	<option value="32g">
+    <option value="32h">
+    <option value="32i">
+	<option value="32j">
+	<option value="34aa">
+    <option value="34a">
+	<option value="34b">
+    <option value="34c">
+	<option value="34d">
+    <option value="34dd">
+    <option value="34e">
+    <option value="34f">
+	<option value="34g">
+    <option value="34h">
+	<option value="34i">
+    <option value="34j">
+	<option value="36aa">
+    <option value="36a">
+    <option value="36b">
+	<option value="36c">
+    <option value="36d">
+	<option value="36dd">
+    <option value="36e">
+	<option value="36f">
+    <option value="36g">
+    <option value="36h">
+    <option value="36i">
+    <option value="36j">
+	<option value="38aa">
+    <option value="38a">
+	<option value="38b">
+    <option value="38c">
+	<option value="38d">
+    <option value="38dd">
+    <option value="38e">
+	<option value="38f">
+    <option value="38g">
+	<option value="38h">
+    <option value="38i">
+	<option value="38j">
+    <option value="40b">
+    <option value="40c">
+    <option value="40d">
+	<option value="40dd">
+    <option value="40e">
+    <option value="40f">
+    <option value="40g">
+	<option value="40h">
+    <option value="40j">
+    <option value="42b">
+    <option value="42c">
+	<option value="42d">
+    <option value="42dd">
+    <option value="42e">
+    <option value="42f">
+    <option value="42g">
+	<option value="42j">
+    <option value="44b">
+    <option value="44c">
+    <option value="44d">
+	<option value="44dd">
+    <option value="44e">
+    <option value="44f">
+    <option value="44g">
+	<option value="44h">
+    <option value="46e">
+    <option value="48d">
+    <option value="48dd">
+	
+  </datalist>
+  <label for="bodytype">Body Type:</label><br>
+  <input list="bodytype" name="bodytype"><br>
+  <datalist id="bodytype">
+    <option value="hourglass">
+    <option value="straight & narrow">
+    <option value="pear">
+    <option value="athletic">
+    <option value="full bust">
+    <option value="petite">
+    <option value="apple">
+	</datalist>
+	<label for="rented">Rented for:</label><br>
+	<input list="rented" name="rented"><br>
+  <datalist id="rented">
+    <option value="vacation">
+    <option value="formal affair">
+    <option value="wedding">
+    <option value="date">
+    <option value="everyday">
+    <option value="party">
+    <option value="work">
+    <option value="party: cocktail">
+    <option value="other">
+	</datalist>
+	
+	<label for="product">Product to buy:</label><br>
+	<input list="product" name="product"><br>
+  <datalist id="product">
+    <option value="Crop Top">
+    <option value="Midi Dress">
+    
+	</datalist>
+    
+    
+    
+  <br><br>
+  <input type="submit" value="Predict">
+</form>
+     <br><br>
+    <form method="POST" action="{{ url_for('cv')}}">
+  <input type="file" id="myFile" name="filename">
+  <input type="submit" value="Upload pic">
+</form>
+    
+    
+<h1>The Recommended size from the information given is : <mark>{{prediction}}</mark> </h1>
+    
+    
+</body>
+
+</html>
+
+{% endblock %}
